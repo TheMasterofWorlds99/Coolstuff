@@ -9,10 +9,14 @@ struct Test {
   auto would work if we defined it in the struct like: auto value = 23; 
   That's why we use T value rather then auto value*/
 
-  Test(T val) : value(val) {} // Constructor to initialize value
+  explicit Test(const T& val) : value(val) {} // Constructor to initialize value
 
   void display() const {
-	  std::cout << "Value: " << value << std::endl;
+	std::cout << "Value: " << value << std::endl;
+  }
+
+  ~Test() {
+    std::cout << "Destructor called for value: " << value << std::endl;
   }
 };
 
